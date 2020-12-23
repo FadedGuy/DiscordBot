@@ -12,6 +12,7 @@ module.exports = {
             "headers": {
                 "x-rapidapi-key": "c01ccaab10msh431830b1b4fced2p18bba7jsne2c6adb50bf6",
                 "x-rapidapi-host": "quotes15.p.rapidapi.com",
+                "language_code": "es",
                 "useQueryString": true
             }
         };
@@ -27,11 +28,11 @@ module.exports = {
                 const body = Buffer.concat(chunks);
                 let jsonComplete = JSON.parse(body);
                 let frase = '"' + jsonComplete.content + '"\n\t - ' + jsonComplete.originator.name;
+                console.log(frase);
                 message.channel.send(frase);
             });
         });
 
         req.end();
-        //message.channel.send('Frase');
     }
 }

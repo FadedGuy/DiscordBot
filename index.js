@@ -28,7 +28,7 @@ client.on('message', message => {
         client.commands.get('ping').execute(message, args);
     } else if(command == 'frase'){
         client.commands.get('phrase').execute(message, args);
-    }
+    } 
 });
 
 client.login(process.env.token);
