@@ -1,11 +1,11 @@
 module.exports = {
     name: 'phrase',
-    description: 'This command returns a random quote',
+    description: 'This command returns a random quote in the specified language, if language not valid defaults to en',
     execute(message, args){
         const http = require("https");
 
         let pathReq = "/quotes/random/";
-        let langValid = ["en", "es"];
+        let langValid = ["en", "es", "pt", "it", "de", "fr", "cs", "sk", "pl", "hu", "ru"];
 
         if(args.length > 0){
             for(let lang of langValid){
@@ -38,7 +38,6 @@ module.exports = {
                 const body = Buffer.concat(chunks);
                 let jsonComplete = JSON.parse(body);
                 let frase = '"' + jsonComplete.content + '"\n\t - ' + jsonComplete.originator.name;
-                console.log(pathReq);
                 message.channel.send(frase);
             });
         });
