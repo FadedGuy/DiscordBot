@@ -6,7 +6,6 @@ const client = new Discord.Client();
 const prefix = '-';
 
 const fs = require('fs');
-const { cpuUsage } = require('process');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
@@ -29,7 +28,7 @@ client.on('message', message => {
         client.commands.get('ping').execute(message, args);
     } else if(command == 'frase'){
         client.commands.get('phrase').execute(message, args);
-    } else if(command == '')
-})
+    }
+});
 
-client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.yN_9IxYQEcJ3S3S54gSZLrtX3Yo');
+client.login(process.env.token);
