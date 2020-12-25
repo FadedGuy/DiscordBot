@@ -5,6 +5,6 @@ module.exports = {
         msg = "```\n";
         msg += "### Comandos disponibles!\n";
 
-        message.channel.send('');
+        message.channel.send(msg);
     }
 }
