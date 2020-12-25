@@ -2,10 +2,13 @@ module.exports = {
     name: 'help',
     description: 'Lista de comandos disponibles de Lil Peep',
     execute(message, args){
-        msg = "```\n";
-        msg += "## Comandos disponibles!\n";
+        msg = "::: info\nLista de ==comandos== disponibles\n";
 
-        msg += "```";
+        for(let comd of client.commands){
+            console.log(comd);
+        }
+
+        msg += "\n:::";
         message.channel.send(msg);
     }
 }
