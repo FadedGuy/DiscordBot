@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'phrase',
-    description: 'This command returns a random quote in the specified language, if language not valid defaults to en',
+    name: 'frase',
+    description: 'Da una frase aleatoria en el idioma especificado, si no se especifica se da en ingles',
     execute(message, args){
         const http = require("https");
 
