@@ -5,7 +5,7 @@ module.exports = {
         msg = "::: info\nLista de ==comandos== disponibles\n";
 
         for(let comd of commandsList){
-            console.log(comd);
+            console.log(comd + "\n\n\n\n");
         }
 
         msg += "\n:::";
