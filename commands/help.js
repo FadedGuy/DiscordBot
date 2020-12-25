@@ -3,9 +3,9 @@ module.exports = {
     description: 'Lista de comandos disponibles de Lil Peep',
     execute(message, args, commandsList){
         msg = "::: info\nLista de ==comandos== disponibles\n";
-
-        for(let comd of commandsList){
-            console.log(comd[1]);
+        commands = JSON.parse(commandsList)
+        for(let comd of commands){
+            console.log(comd);
         }
 
         msg += "\n:::";
