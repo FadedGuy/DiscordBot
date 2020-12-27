@@ -36,5 +36,5 @@ client.on('message', message => {
     }
 });
 
-//client.login(process.env.token);
-client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.yN_9IxYQEcJ3S3S54gSZLrtX3Yo')
+client.login(process.env.token);
+//client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.yN_9IxYQEcJ3S3S54gSZLrtX3Yo')
