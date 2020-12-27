@@ -1,6 +1,6 @@
 module.exports = {
     name: 'frase',
-    description: 'Da una frase aleatoria en el idioma especificado, si no se especifica se da en ingles',
+    description: 'Da una frase aleatoria en el idioma especificado (es, fr, ru, en), si no se especifica se da en ingles',
     execute(message, args){
         const http = require("https");
 

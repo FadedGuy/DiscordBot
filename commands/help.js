@@ -2,13 +2,15 @@ module.exports = {
     name: 'help',
     description: 'Lista de comandos disponibles de Lil Peep',
     execute(message, args, commandsList){
-        msg = "::: info\nLista de ==comandos== disponibles\n";
-        commands = JSON.parse(commandsList[1])
-        for(let comd of commands){
-            console.log(comd);
+        msg = "```css\n[Lista de comandos disponibles.]\n";
+
+        for(let comd of commandsList){
+            if(comd[1].name != "help"){
+                msg += ("." + comd[1].name + ": " + comd[1].description + "\n");
+            }
         }
 
-        msg += "\n:::";
+        msg += "\n```";
         message.channel.send(msg);
     }
 }
