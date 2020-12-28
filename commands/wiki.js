@@ -34,7 +34,7 @@ module.exports = {
                         for(var i = 1; i <= 3; i++){
                             msg += (i + ".- " + jsonComplete[i] + "\n");
                         }
-                        console.log(msg + "\n" + message.author);
+                        console.log(msg + "\n" + message.author.username);
                         message.channel.send(msg);
                     });
                 });
@@ -69,7 +69,7 @@ module.exports = {
                     const body = Buffer.concat(chunks);
                     let jsonComplete = JSON.parse(body);
                     let num = Math.floor(Math.random() * 3) + 1;
-                    console.log(jsonComplete[num] + "\n" + message.author);
+                    console.log(jsonComplete[num] + "\n" + message.author.username);
                     message.channel.send(jsonComplete[num]);
                 });
             });
