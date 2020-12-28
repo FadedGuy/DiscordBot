@@ -3,6 +3,6 @@ module.exports = {
     description: 'Comprueba que el bot esta activo',
     execute(message, args){
         message.channel.send('Wassup!');
-        console.log(message.author.username);
+        console.log(message.author.username + "#" + message.author.discriminator);
     }
 }

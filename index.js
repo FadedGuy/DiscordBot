@@ -31,7 +31,9 @@ client.on('message', message => {
         client.commands.get('frase').execute(message, args);
     } else if(command == 'help'){
         client.commands.get('help').execute(message, args, client.commands);
-    }  else{
+    } else if(command == 'image'){
+        client.commands.get('image').execute(message, args);
+    } else{
         message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
     }
 });

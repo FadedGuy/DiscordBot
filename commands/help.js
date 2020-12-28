@@ -11,7 +11,7 @@ module.exports = {
         }
 
         msg += "\n```";
-        console.log(message.author.username);
+        console.log(message.author.username + "#" + message.author.discriminator);
         message.channel.send(msg);
     }
 }
