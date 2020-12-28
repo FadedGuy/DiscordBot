@@ -1,3 +1,5 @@
+const { fileURLToPath } = require("url");
+
 module.exports = {
     name: 'wiki',
     description: 'Regresa una imagen random de wikihow o pasos si especificas (steps)',
@@ -32,6 +34,7 @@ module.exports = {
                         for(var i = 1; i <= 3; i++){
                             msg += (i + ".- " + jsonComplete[i] + "\n");
                         }
+                        console.log(msg + "\n" + message.author);
                         message.channel.send(msg);
                     });
                 });
@@ -66,6 +69,7 @@ module.exports = {
                     const body = Buffer.concat(chunks);
                     let jsonComplete = JSON.parse(body);
                     let num = Math.floor(Math.random() * 3) + 1;
+                    console.log(jsonComplete[num] + "\n" + message.author);
                     message.channel.send(jsonComplete[num]);
                 });
             });

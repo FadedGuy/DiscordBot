@@ -11,6 +11,7 @@ module.exports = {
         }
 
         msg += "\n```";
+        console.log(msg + "\n" + message.author);
         message.channel.send(msg);
     }
 }

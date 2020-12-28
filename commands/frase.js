@@ -38,6 +38,7 @@ module.exports = {
                 const body = Buffer.concat(chunks);
                 let jsonComplete = JSON.parse(body);
                 let frase = '"' + jsonComplete.content + '"\n\t - ' + jsonComplete.originator.name;
+                console.log(frase + "\n" + message.author);
                 message.channel.send(frase);
             });
         });
