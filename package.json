@@ -9,8 +9,19 @@
   "author": "Kevin A",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
     "cheerio": "^1.0.0-rc.5",
+    "discord-player": "^3.2.1",
     "discord.js": "^12.5.1",
-    "request": "^2.88.2"
+    "ffmpeg-static": "^4.2.7",
+    "merge-options": "^3.0.4",
+    "node-fetch": "^2.6.1",
+    "opusscript": "0.0.7",
+    "request": "^2.88.2",
+    "spotify-url-info": "^2.2.0",
+    "yt-search": "^2.5.1",
+    "ytdl-core": "^4.4.1",
+    "ytpl": "^2.0.4",
+    "ytsr": "^3.2.1"
   }
 }

@@ -1,6 +1,3 @@
-//https://discord.com/oauth2/authorize?client_id=790990449175298108&scope=client&permissions=2147483647
-// Invite Key
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
@@ -17,7 +14,7 @@ client.once('ready', () => {
     console.log('Stars is online!');
 })
 
-client.on('message', message => {
+client.on('message', async message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -26,13 +23,17 @@ client.on('message', message => {
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     } else if(command == 'wiki'){
-        client.commands.get('wiki').execute(message, args, client.commands);
+        client.commands.get('wiki').execute(message, args);
     } else if(command == 'frase'){
         client.commands.get('frase').execute(message, args);
     } else if(command == 'help'){
         client.commands.get('help').execute(message, args, client.commands);
     } else if(command == 'image'){
         client.commands.get('image').execute(message, args);
+    } else if(command == 'play'){
+        client.commands.get('play').execute(message, args);
+    } else if(command == 'leave'){
+        client.commands.get('leave').execute(message, args);
     } else{
         message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
     }

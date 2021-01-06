@@ -27,7 +27,7 @@ module.exports = {
             if(!urls.length){
                 return;
             }
-            console.log(urls + "\n" + message.author.username + "#" + message.author.discriminator);
+            //console.log(message.author.username + "#" + message.author.discriminator);
             message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
         });
     }

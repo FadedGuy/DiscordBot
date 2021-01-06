@@ -69,7 +69,7 @@ module.exports = {
                     const body = Buffer.concat(chunks);
                     let jsonComplete = JSON.parse(body);
                     let num = Math.floor(Math.random() * 3) + 1;
-                    console.log(jsonComplete[num] + "\n" + message.author.username + "#" + message.author.discriminator);
+                   // console.log(jsonComplete[num] + "\n" + message.author.username + "#" + message.author.discriminator);
                     message.channel.send(jsonComplete[num]);
                 });
             });
