@@ -1,7 +1,7 @@
 module.exports = {
     name: 'resume',
     description: 'Sigue reproduciendo la musica',
-    async execute(message, serverQueue){
+    execute(message, serverQueue){
         if(!message.member.voice.channel){
             return message.channel.send("Tienes que estar en un canal de voz para usar este comando");
         }

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'skip',
     description: 'Salta a la siguiente cancion disponible',
-    async execute(message, serverQueue){
+    execute(message, serverQueue){
         if(!message.member.voice.channel){
             return message.channel.send("Tienes que estar en un chat de voz para utilizar este comando");
         }
