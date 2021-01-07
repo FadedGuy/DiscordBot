@@ -43,6 +43,9 @@ client.on('message', async message => {
         case 'play':
             client.commands.get('play').execute(message, args, serverQueue, queue);
             break;
+        case 'queue':
+            client.commands.get('queue').execute(message, serverQueue);
+            break;
         case 'skip':
             client.commands.get('skip').execute(message, serverQueue);
             break;
