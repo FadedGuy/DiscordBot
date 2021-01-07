@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
 
+const queue = new Map();
+
 const fs = require('fs');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -17,10 +19,47 @@ client.once('ready', () => {
 client.on('message', async message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
+    const serverQueue = queue.get(message.guild.id);
+
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'ping'){
+    switch(command){
+        case 'ping':
+            client.commands.get('ping').execute(message, args);
+            break;
+        case 'wiki':
+            client.commands.get('wiki').execute(message, args);
+            break;
+        case 'frase':
+            client.commands.get('frase').execute(message, args);
+            break;
+        case 'help':
+            client.commands.get('help').execute(message, args, client.commands);
+            break;
+        case 'image':
+            client.commands.get('image').execute(message, args);
+            break;
+        case 'play':
+            client.commands.get('play').execute(message, args, serverQueue, queue);
+            break;
+        case 'skip':
+            client.commands.get('skip').execute(message, serverQueue);
+            break;
+        case 'resume':
+            client.commands.get('resume').execute(message, serverQueue);
+            break;
+        case 'stop':
+            client.commands.get('stop').execute(message, serverQueue);
+            break;
+        case 'leave':
+            client.commands.get('leave').execute(message, serverQueue);
+            break;
+        default:
+            message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
+    }
+
+    /*if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     } else if(command == 'wiki'){
         client.commands.get('wiki').execute(message, args);
@@ -31,13 +70,13 @@ client.on('message', async message => {
     } else if(command == 'image'){
         client.commands.get('image').execute(message, args);
     } else if(command == 'play'){
-        client.commands.get('play').execute(message, args);
+        client.commands.get('play').execute(message, args, serverQueue, queue);
     } else if(command == 'leave'){
         client.commands.get('leave').execute(message, args);
     } else{
         message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
-    }
+    }*/
 });
 
-client.login(process.env.token);
-//client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.yN_9IxYQEcJ3S3S54gSZLrtX3Yo')
+//client.login(process.env.token);
+client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.yN_9IxYQEcJ3S3S54gSZLrtX3Yo')
