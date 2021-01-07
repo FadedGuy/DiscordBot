@@ -8,6 +8,7 @@ module.exports = {
         if(!serverQueue){
             return message.channel.send("No hay cancion reproduciendose actualmente");
         } else{
+            message.channel.send("Se ha resumido la cancion");
             serverQueue.connection.dispatcher.resume();
         }
         

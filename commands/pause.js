@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'stop',
+    name: 'pause',
     description: 'Para la reproduccion de la musica',
     async execute(message, serverQueue){
         if(!message.member.voice.channel){
@@ -8,6 +8,7 @@ module.exports = {
         if(!serverQueue){
             return message.channel.send("No hay cancion reproduciendose actualmente");
         } else{
+            message.channel.send("Se ha pausado la cancion, para reanudar utiliza resume");
             serverQueue.connection.dispatcher.pause();
         }
         

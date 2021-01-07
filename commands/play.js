@@ -9,9 +9,12 @@ module.exports = {
             const serverQueue = queue.get(guild.id);
             if(!song){
                 serverQueue.vChannel.leave();
+                message.channel.send("No hay cancion en cola, saliendo del chat de voz");
                 queue.delete(guild.id);
                 return;
             }
+            
+            message.channel.send(`Reproduciendo actualmente <${song.title}>`);
             const dispatcher = serverQueue.connection
                 .play(ytdl(song.url))
                 .on('finish', () => {
@@ -87,10 +90,10 @@ module.exports = {
                 }
             } else{
                 serverQueue.songs.push(song);
-                return message.channel.send(`La cancion ${song.title} ha sido añadida`);
+                return message.channel.send(`La cancion <${song.title}> ha sido añadida`);
             }
 
-            const stream  = ytdl(video.url, {filter: 'audioonly'});
+            /*const stream  = ytdl(video.url, {filter: 'audioonly'});
             connection.play(stream, {seek: 0, volume: 1})
             .on('finish', () =>{
                 voiceChannel.leave();
@@ -99,7 +102,8 @@ module.exports = {
             await message.reply(`Reproduciendo ***${video.title}***`)
         } else {
             message.channel.send('Sin resultados');
-        }
+        }*/
         
-    }
-}
+        }
+    } 
+}  

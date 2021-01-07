@@ -49,8 +49,8 @@ client.on('message', async message => {
         case 'resume':
             client.commands.get('resume').execute(message, serverQueue);
             break;
-        case 'stop':
-            client.commands.get('stop').execute(message, serverQueue);
+        case 'pause':
+            client.commands.get('pause').execute(message, serverQueue);
             break;
         case 'leave':
             client.commands.get('leave').execute(message, serverQueue);
