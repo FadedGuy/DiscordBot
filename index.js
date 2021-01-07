@@ -56,26 +56,9 @@ client.on('message', async message => {
             client.commands.get('leave').execute(message, serverQueue);
             break;
         default:
-            message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
+            message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```");
+            break;
     }
-
-    /*if(command === 'ping'){
-        client.commands.get('ping').execute(message, args);
-    } else if(command == 'wiki'){
-        client.commands.get('wiki').execute(message, args);
-    } else if(command == 'frase'){
-        client.commands.get('frase').execute(message, args);
-    } else if(command == 'help'){
-        client.commands.get('help').execute(message, args, client.commands);
-    } else if(command == 'image'){
-        client.commands.get('image').execute(message, args);
-    } else if(command == 'play'){
-        client.commands.get('play').execute(message, args, serverQueue, queue);
-    } else if(command == 'leave'){
-        client.commands.get('leave').execute(message, args);
-    } else{
-        message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```")
-    }*/
 });
 
 client.login(process.env.token);

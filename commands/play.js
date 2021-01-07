@@ -9,11 +9,10 @@ module.exports = {
             const serverQueue = queue.get(guild.id);
             if(!song){
                 serverQueue.vChannel.leave();
-                message.channel.send("No hay cancion en cola, saliendo del chat de voz");
                 queue.delete(guild.id);
-                return;
+                return message.channel.send("No hay cancion en cola, saliendo del chat de voz");;
             }
-            
+
             message.channel.send(`Reproduciendo actualmente <${song.title}>`);
             const dispatcher = serverQueue.connection
                 .play(ytdl(song.url))
@@ -31,30 +30,6 @@ module.exports = {
         if (!permissions.has('SPEAK')) return message.channel.send('No tienes los permisos necesarios');
         if (!args.length) return message.channel.send('Debes de agregar una url o algo mas');
         
-        /*const validURL = (str) =>{
-            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-            if(!regex.test(str)){
-                return false;
-            } else {
-                return true;
-            }
-        }
- 
-        if(validURL(args[0])){
-            const connection = await voiceChannel.join();
-            const stream  = ytdl(args[0], {filter: 'audioonly'});
- 
-            connection.play(stream, {seek: 0, volume: 1})
-            .on('finish', () =>{
-                voiceChannel.leave();
-                message.channel.send('Adios!');
-            });
- 
-            await message.reply(`Reproduciendo ***Your Link!***`)
- 
-            return
-        }*/
- 
         const videoFinder = async (query) => {
             const videoResult = await ytSearch(query);
             return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
@@ -92,18 +67,6 @@ module.exports = {
                 serverQueue.songs.push(song);
                 return message.channel.send(`La cancion <${song.title}> ha sido añadida`);
             }
-
-            /*const stream  = ytdl(video.url, {filter: 'audioonly'});
-            connection.play(stream, {seek: 0, volume: 1})
-            .on('finish', () =>{
-                voiceChannel.leave();
-            });
- 
-            await message.reply(`Reproduciendo ***${video.title}***`)
-        } else {
-            message.channel.send('Sin resultados');
-        }*/
-        
         }
     } 
 }  
