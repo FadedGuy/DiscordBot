@@ -9,7 +9,7 @@ module.exports = {
             if(serverQueue.songs.length > 0){
                 let msg = "```css\n[Canciones en cola]\n";
                 for(let song of serverQueue.songs){
-                    msg += (". -->" + song.title + "\n");
+                    msg += (".-->" + song.title + "\n");
                 }
                 msg += "```";
                 return message.channel.send(msg);
