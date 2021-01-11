@@ -1,8 +1,12 @@
+//async convert_audio()
+//
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
 
 const queue = new Map();
+let witAPIKEY = process.env.witKEY;
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -58,6 +62,8 @@ client.on('message', async message => {
         case 'leave':
             client.commands.get('leave').execute(message, serverQueue);
             break;
+        case 'join':
+            client.commands.get('join').execute(message, serverQueue, queue);
         default:
             message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```");
             break;
