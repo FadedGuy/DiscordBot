@@ -1,7 +1,7 @@
 module.exports = {
     name: 'join',
     description: 'El bot se une al canal de voz',
-    execute(message, serverQueue, queue){
+    async execute(message, serverQueue, queue){
         if(!message.member.voice.channel) return message.channel.send("Tienes que estar en un canal de voz para usar este comando");
         if(!serverQueue){
             const queueConstructor = {
