@@ -62,9 +62,6 @@ client.on('message', async message => {
         case 'leave':
             client.commands.get('leave').execute(message, serverQueue);
             break;
-        case 'join':
-            client.commands.get('join').execute(message, serverQueue, queue);
-            break;
         default:
             message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```");
             break;
