@@ -16,10 +16,11 @@ module.exports = {
             try{
                 let connection = await message.member.voice.channel.join(); 
                 queueConstructor.connection = connection;
+                return message.channel.send('Estoy conectado!');
             } catch (err){
                 console.log(err);
                 queue.delete(message.guild.id);
-                    return message.channel.send(`No se puede unir al canal de voz ${err}`);
+                return message.channel.send(`No se puede unir al canal de voz ${err}`);
             }
         } else{
             return message.channel.send("Ya estoy conectado");
