@@ -17,7 +17,7 @@ for(const file of commandFiles){
 }
 
 client.once('ready', () => {
-    console.log('Stars is online!');
+    console.log('Stars is online!' + witAPIKEY);
 })
 
 client.on('message', async message => {
