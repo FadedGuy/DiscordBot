@@ -1,12 +1,10 @@
-//async convert_audio()
-//
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
 
 const queue = new Map();
 let witAPIKEY = process.env.witKEY;
+//let witAPIKEY = 'EBT7SDHDIPG3SCRXI2S5B6NAZWQRBKQ3';
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -16,8 +14,42 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
+/////////////////
+////////////////
+//////////////
+function directories_needed(){
+    if(!fs.existsSync('./temp/')){
+        fs.mkdirSync('./temp/');
+    } else{
+        fs.rmdirSync('./temp/');
+        fs.mkdirSync('./temp/');
+    }
+    if(!fs.existsSync('./data/')){
+        fs.mkdirSync('./data/');
+    }
+}
+directories_needed();
+
+async function conv_audio(infile, outfile){
+    try{
+        const data = new Int16Array(fs.readFileSync(infile));
+        const ndata = new Int16Array(data.length/2);
+        for(let i = 0, j = 0; i < data.length; i+=4){
+            ndata[j++] = data[i];
+            ndata[j++] = data[i+1];
+        }
+        fs.writeFileSync(outfile, Buffer.from(ndata), 'binary');
+    } catch (err){
+        console.log(err);
+        console.log('conv_audio: ' + err);
+    }
+}
+///////////////
+///////////////
+///////////////
+
 client.once('ready', () => {
-    console.log('Stars is online!' + witAPIKEY);
+    console.log('Stars is online!');
 })
 
 client.on('message', async message => {
@@ -61,6 +93,9 @@ client.on('message', async message => {
             break;
         case 'leave':
             client.commands.get('leave').execute(message, serverQueue);
+            break;
+        case 'join':
+            client.commands.get('join').execute(message, args, serverQueue, queue);
             break;
         default:
             message.channel.send("```\nComando no encontrado, prueba -help para ver la lista de comandos disponibles y que es lo que hacen```");
