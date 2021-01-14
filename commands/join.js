@@ -1,7 +1,7 @@
 module.exports = {
     name: 'join',
     description: 'Joins the voice channel',
-    async execute(message, args, serverQueue, queue){
+    async execute(message, serverQueue, queue){
         const voiceChannel = message.member.voice.channel;
  
         if (!voiceChannel) return message.channel.send('Tienes que estar en un canal de voz para usar este comando');
@@ -23,12 +23,12 @@ module.exports = {
             try{
                 let connection = await voiceChannel.join(); 
                 queueConstructor.connection = connection;
-                const dispatcher = serverQueue.connection;
+                const dispatcher = connection;
             } catch (err){
                 console.log(err);
                 queue.delete(message.guild.id);
                 return message.channel.send(`No se puede unir al canal de voz ${err}`);
             }
-        } 
+        }
     } 
 }  
