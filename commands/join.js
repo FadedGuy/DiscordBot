@@ -32,7 +32,7 @@ module.exports = {
             }
         }
         function speak(connection, key){
-            console.log(connection);
+            console.log("Si hay conexion");
         }
     } 
 }  
