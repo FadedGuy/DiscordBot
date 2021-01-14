@@ -8,6 +8,6 @@ module.exports = {
         if(!serverQueue){
             return message.channel.send("No hay cancion para skipear");
         }
-        serverQueue.connection.dispatcher.end();
+        serverQueue.connection.dispatcher.end();queue.delete(guild.id);
     }
 }

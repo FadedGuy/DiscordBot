@@ -23,7 +23,6 @@ module.exports = {
             try{
                 let connection = await voiceChannel.join();
                 queueConstructor.connection = connection;
-                const dispatcher = connection;
             } catch (err){
                 console.log(err);
                 queue.delete(message.guild.id);

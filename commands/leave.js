@@ -5,7 +5,7 @@ module.exports = {
         const voiceChannel = message.member.voice.channel;
         if(!voiceChannel) return message.channel.send("Tienes que estar en un canal de voz para usar este comando");
         serverQueue.songs = [];
-        serverQueue.connection.dispatcher.end();
+        serverQueue.connection.dispatcher.end();queue.delete(guild.id);
         await message.channel.send("Saliendo del canal de voz");
     }
 }
