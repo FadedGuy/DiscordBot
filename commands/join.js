@@ -21,7 +21,8 @@ module.exports = {
             queue.set(message.guild.id, queueConstructor);
 
             try{
-                let connection = await voiceChannel.join(); 
+                let connection = await voiceChannel.join();
+                speak(connection, message.guild.id);
                 queueConstructor.connection = connection;
                 const dispatcher = connection;
             } catch (err){
@@ -29,6 +30,9 @@ module.exports = {
                 queue.delete(message.guild.id);
                 return message.channel.send(`No se puede unir al canal de voz ${err}`);
             }
+        }
+        function speak(connection, key){
+            console.log(connection);
         }
     } 
 }  
