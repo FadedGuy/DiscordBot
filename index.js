@@ -4,7 +4,6 @@ const prefix = '-';
 
 const queue = new Map();
 let witAPIKEY = process.env.witKEY;
-//let witAPIKEY = 'EBT7SDHDIPG3SCRXI2S5B6NAZWQRBKQ3';
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -104,4 +103,3 @@ client.on('message', async message => {
 });
 
 client.login(process.env.token);
-//client.login('NzkwOTkwNDQ5MTc1Mjk4MTA4.X-IpQg.oxne1w5xJ-8P8K727vFhJ6kl3yM')
